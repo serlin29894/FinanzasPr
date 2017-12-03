@@ -15,7 +15,7 @@ public class CameraControl : MonoBehaviour {
 
     public void LateUpdate ()
     {
-        distanceToCamera += Input.mouseScrollDelta.x * -1 + Input.mouseScrollDelta.y * -1;
+        distanceToCamera += Input.mouseScrollDelta.x  + Input.mouseScrollDelta.y ;
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -25,7 +25,7 @@ public class CameraControl : MonoBehaviour {
             heightToCamera -= 0.1f;
         }
       
-        destination = new Vector3(target.transform.position.x + distanceToCamera, target.transform.position.y + heightToCamera, target.transform.position.z );
+        destination = new Vector3(target.transform.position.x , target.transform.position.y + heightToCamera, target.transform.position.z - distanceToCamera);
 
         transform.position = Vector3.Lerp(transform.position, destination, smoothSpeed);
         
