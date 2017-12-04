@@ -14,11 +14,11 @@ public class CameraChange : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (mPlayer.forward)
+        if (!mPlayer.backwards)
         {
             cam.target = forward;
         }
-        else if (!mPlayer.forward)
+        else if (mPlayer.backwards)
         {
             cam.target = backwards;
         }

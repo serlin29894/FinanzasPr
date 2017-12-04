@@ -20,7 +20,7 @@ public class PlayerControl : MonoBehaviour {
     private bool grounded = true;
 
     [NonSerialized]
-    public bool forward;
+    public bool backwards;
 
     public void Start()
     {
@@ -36,17 +36,19 @@ public class PlayerControl : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.A))
         {
-            forward = mSp.flipX = true;
+            anim.SetBool("Idle", false);
+            backwards = mSp.flipX = true;
             direction = transform.right * -1;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            forward = mSp.flipX = false;
+            anim.SetBool("Idle", false);
+            backwards = mSp.flipX = false;
             direction = transform.right;
         }
         else
         {
-
+            anim.SetBool("Idle", true);
             direction = Vector3.zero;
         }
 
