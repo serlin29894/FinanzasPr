@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerControl : MonoBehaviour {
 
@@ -18,6 +19,8 @@ public class PlayerControl : MonoBehaviour {
 
     private bool grounded = true;
 
+    [NonSerialized]
+    public bool forward;
 
     public void Start()
     {
@@ -33,16 +36,17 @@ public class PlayerControl : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.A))
         {
-            mSp.flipX = true;
+            forward = mSp.flipX = true;
             direction = transform.right * -1;
         }
         else if (Input.GetKey(KeyCode.D))
         {
-            mSp.flipX = false;
+            forward = mSp.flipX = false;
             direction = transform.right;
         }
         else
         {
+
             direction = Vector3.zero;
         }
 
